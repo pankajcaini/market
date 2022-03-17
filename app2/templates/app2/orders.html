@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <style>
+
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
+        a{
+            padding: 8px;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: whitesmoke;
+            
+        }
+        nav{
+            background-color: cornflowerblue;
+            padding: 8px;
+        }
+        table{
+            border: 1px solid black;
+            margin-top: 50px;
+            border-collapse: collapse;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        th,td{
+            padding: 12px;
+            border: 1px solid black;
+            text-align: left;
+        }
+        .product-link{
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        {% if user is None %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'new_user' %}">Create Account</a>
+        {% else %}
+            <a href="{% url 'logout' %}">Log out</a>
+            <a href="{% url 'cart' %}">Cart</a>
+            <a href="{% url 'orders' %}">Orders</a>
+        {% endif %}
+    </nav>
+
+
+    <div>
+        <table align="center">
+            <thead>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Order Placed At</th>
+                <th>Quantity</th>
+            </thead>
+
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td><a href="/single_product/{{product.product.id}}" class="product-link">{{product.product.name}}</a></td>
+                        <td>{{product.product.price}}</td>
+                        <td>{{product.date}}</td>
+                        <td>{{product.quantity}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+
+        </table>
+    </div>
+
+
+</body>
+</html>

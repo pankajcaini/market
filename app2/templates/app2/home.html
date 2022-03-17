@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+
+        body{
+            background-color: honeydew;
+            padding: 0;
+            margin: 0;
+        }
+
+        #header{
+            background-color: chocolate;
+            /* height: 300px; */
+        }
+
+        #header h1{
+            font-size: 50px;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: white;
+        }
+
+
+        div{
+            padding: 5px;
+        }
+
+        .product{
+            margin-top: 30px;
+            text-align: center;
+        }
+        th,td{
+            text-align: left;
+        }
+
+        a{
+            padding: 8px;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: whitesmoke;
+        }
+        nav{
+            background-color: brown;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #all_product{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            align-content: center;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <div id="header">
+        <h1>Online Restaurant</h1>
+    </div>
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        {% if user is None %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'new_user' %}">Register</a>
+        {% else %}
+            <a href="{% url 'logout' %}">Log out</a>
+            <a href="{% url 'cart' %}">Cart</a>
+            <a href="{% url 'orders' %}">Orders</a>
+        {% endif %}
+    </nav>
+
+    <div id="all_product">
+    {% for product in products %}
+        <div class="product">
+            <div>
+                <a href="/single_product/{{product.id}}">
+                  <img src="{{product.image.url}}" alt="">
+                </a>
+            </div>
+            <div>
+                <table align="center">
+                    <tr>
+                        <th>Name:</th>
+                        <td>{{product.name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Price:</th>
+                        <td>{{product.price}} RS</td>
+                    </tr>
+                    <tr>
+                        <th>Discount:</th>
+                        <td>{{product.discount}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        #pay-btn-wrapper {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+        }
+
+        a {
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+
+        body {
+            background-color: gainsboro;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        #select-payment-mode {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #payment-mode {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div>
+            <table align="center">
+                <thead>
+                    <th>Product Name</th>
+                    <th>Price Per Item</th>
+                    <th>Quantity</th>
+                </thead>
+
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{product.product.name}}</td>
+                        <td>{{product.product.price}}</td>
+                        <td>{{product.quantity}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <table align="center" id="total_ammount_table">
+                <th>Total Payable Ammount</th>
+                <td>{{total_ammount}}</td>
+            </table>
+        </div>
+    </div>
+
+    <div id="select-payment-mode">
+        
+        <label for="payment-mode">Select Payment Mode</label><br>
+        <select name="" id="payment-mode">
+            <optgroup label="Phone Pe">
+                <option value="">Phone Pe QR Code</option>
+                <option value="">Phone UPI ID</option>
+            </optgroup>
+            
+            <optgroup label="PayTM">
+                <option value="">PayTM QR Code</option>
+                <option value="">PayTM UPI ID</option>
+            </optgroup>
+
+            <optgroup label="Card">
+                <option value="" selected>Debit Card of Any Bank</option>
+                <option value="">Credit Card of Any Bank</option>
+            </optgroup>
+        </select>
+
+    </div>
+
+    <div id="pay-btn-wrapper">
+        <button><a href="{% url 'pay' %}">Pay</a></button>
+    </div>
+
+</body>
+</html>
+
+
