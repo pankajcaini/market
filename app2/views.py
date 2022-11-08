@@ -1,4 +1,3 @@
-from turtle import title
 from urllib import response
 from django.shortcuts import render, HttpResponse, redirect
 from app2.models import Products, Cart, User
@@ -146,6 +145,3 @@ def orders(request):
         return render(request, 'app2/no_order.html')
     else:
         return render(request, 'app2/orders.html', {'products':products})
-
-
-
