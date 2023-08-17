@@ -22,9 +22,10 @@
 
         }
 
-        nav {
+        #nav {
             background-color: cornflowerblue;
             padding: 8px;
+            text-align: center;
         }
 
         #products-in-cart {
@@ -96,7 +97,8 @@
 
 <body id="body">
 
-    <nav>
+
+    <nav id="nav">
         <a href="{% url 'home' %}">Home</a>
         {% if user is None %}
         <a href="{% url 'login' %}">Login</a>

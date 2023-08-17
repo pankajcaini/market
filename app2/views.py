@@ -145,3 +145,6 @@ def orders(request):
         return render(request, 'app2/no_order.html')
     else:
         return render(request, 'app2/orders.html', {'products':products})
+
+
+

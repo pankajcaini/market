@@ -53,6 +53,7 @@
         nav{
             background-color: cornflowerblue;
             padding: 8px;
+            text-align: center;
         }
 
         input[type=submit]{
@@ -108,11 +109,12 @@
 
     {% if user is not None %}
     <div id="buy-now-btn-div">
-        <form action="{% url 'buy_now' %}" method="post">
+        <!-- <form action="{% url 'buy_now' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="product_id" value="{{product.id}}">
             <input type="submit" value="Buy Now">
-        </form>
+        </form> -->
+        
         {% if add_to_cart %}
         <form action="{% url 'add_to_cart' %}" method="post">
             {% csrf_token %}

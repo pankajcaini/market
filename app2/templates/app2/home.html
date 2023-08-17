@@ -14,7 +14,7 @@
         }
 
         #header{
-            background-color: chocolate;
+            background-color: cornflowerblue;
             /* height: 300px; */
         }
 
@@ -45,7 +45,7 @@
             color: whitesmoke;
         }
         nav{
-            background-color: brown;
+            background-color: cornflowerblue;
             padding: 10px;
             text-align: center;
         }
@@ -67,7 +67,7 @@
         <a href="{% url 'home' %}">Home</a>
         {% if user is None %}
             <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'new_user' %}">Register</a>
+            <a href="{% url 'new_user' %}">Create New Account</a>
         {% else %}
             <a href="{% url 'logout' %}">Log out</a>
             <a href="{% url 'cart' %}">Cart</a>

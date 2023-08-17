@@ -82,28 +82,6 @@
         </div>
     </div>
 
-    <div id="select-payment-mode">
-        
-        <label for="payment-mode">Select Payment Mode</label><br>
-        <select name="" id="payment-mode">
-            <optgroup label="Phone Pe">
-                <option value="">Phone Pe QR Code</option>
-                <option value="">Phone UPI ID</option>
-            </optgroup>
-            
-            <optgroup label="PayTM">
-                <option value="">PayTM QR Code</option>
-                <option value="">PayTM UPI ID</option>
-            </optgroup>
-
-            <optgroup label="Card">
-                <option value="" selected>Debit Card of Any Bank</option>
-                <option value="">Credit Card of Any Bank</option>
-            </optgroup>
-        </select>
-
-    </div>
-
     <div id="pay-btn-wrapper">
         <button><a href="{% url 'pay' %}">Pay</a></button>
     </div>

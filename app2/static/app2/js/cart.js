@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+
     $('.decrease').on('click', function () {
         const cart_id = $(this).attr('data-id');
         const quantity = parseInt($(`#${cart_id}`).text());
@@ -7,10 +8,7 @@ $(document).ready(function () {
             $.ajax({
                 url: 'http://127.0.0.1:8000/decrease_quantity/',
                 type: 'get',
-                data: {
-                    quantity: quantity,
-                    cart_id: cart_id
-                },
+                data: {quantity: quantity,cart_id: cart_id},
                 success: function (data) {
                     $(`.${cart_id}-quantity`).text(quantity - 1);
                     var total_ammount = parseInt($('#total_ammount').text());
